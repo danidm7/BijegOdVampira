@@ -244,6 +244,12 @@ body::after {
 .blood-table td {
   vertical-align: middle;
 }
+
+iframe {
+  display: block;
+  margin: 20px auto;
+}
+
 @media (max-width: 768px) {
   h1 {
     font-size: 40px;
@@ -297,6 +303,7 @@ body::after {
     max-width: 600px;
   }
 }
+
 
 
 
