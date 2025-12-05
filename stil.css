@@ -245,11 +245,6 @@ body::after {
   vertical-align: middle;
 }
 
-iframe {
-  display: block;
-  margin: 20px auto;
-}
-
 @media (max-width: 768px) {
   h1 {
     font-size: 40px;
@@ -303,6 +298,7 @@ iframe {
     max-width: 600px;
   }
 }
+
 
 
 
