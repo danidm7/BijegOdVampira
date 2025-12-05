@@ -244,5 +244,60 @@ body::after {
 .blood-table td {
   vertical-align: middle;
 }
+@media (max-width: 768px) {
+  h1 {
+    font-size: 40px;
+    margin: 12px;
+  }
+
+  p, a {
+    font-size: 20px;
+  }
+
+  .rooms li {
+    display: block;
+    margin: 10px auto;
+  }
+
+  .rooms img {
+    width: 90%;
+    height: auto;
+  }
+
+  .float {
+    float: none;
+    width: auto;
+    text-align: center;
+    margin: 10px auto;
+  }
+
+  table.blood-table {
+    width: 100%;
+    font-size: 14px;
+  }
+
+  .corner-note,
+  body::after {
+    font-size: 14px;
+    left: 5px;
+    right: 5px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .rooms li {
+    margin: 10px 20px;
+  }
+
+  table.blood-table {
+    width: 70%;
+  }
+
+  .last-words-form {
+    max-width: 600px;
+  }
+}
+
+
 
 
