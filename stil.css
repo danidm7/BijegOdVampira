@@ -23,32 +23,36 @@ img {
   display: inline-block;
   text-decoration: none;
   color: darkred;
+
+  position: relative;
+  border-radius: 14px;
+  outline: none;
 }
 
 .figure-left {
   float: none;            
   display: block;
-  margin: 0 auto 20px;
-  max-width: 380px;
-  text-align: center;
-}
-
-.clearfix::after {
-  content: "";
-  display: block;
-  clear: both;
+  margin: 20px auto;
+  width: 400px;
 }
 
 .rooms {
   list-style: none;
   padding: 0;
-  margin: 12px 0 24px;
   text-align: center;
 }
 
 .rooms li {
   display: inline-block;
-  margin: 6px;
+  margin: 10px;
+}
+
+.rooms img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border: 2px solid darkred;
+  border-radius: 12px;
 }
 
 .label {
@@ -58,23 +62,30 @@ img {
   margin-top: 4px;
 }
 
-
-.rules-list {
-  list-style: decimal-leading-zero inside;
-  max-width: 700px;
-  margin: 0 auto 40px;
-  text-align: left;
+.label {
+  transition: transform 180ms ease, letter-spacing 180ms ease, text-shadow 180ms ease;
 }
 
-.rooms li:first-child img { outline: 3px solid darkred; }
-.rooms.next li:nth-child(2) .label { text-decoration: overline; }
-.rooms.last li:last-child .label { text-shadow: 0 0 6px #ffcccc; }
+.card:hover .label,
+.card:focus-visible .label {
+  transform: translateY(-3px);
+  letter-spacing: 1px;
+  text-shadow: 0 0 10px crimson;
+}
 
-.badge {
+a {
   display: inline-block;
+  margin: 12px auto;
+  padding: 6px 14px;
   border: 2px solid darkred;
-  padding: 0 .5em;
-  border-radius: 6px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+
+a:hover {
+  background: darkred;
+  color: black;
 }
 
 .escape-btn {
@@ -87,10 +98,37 @@ img {
   margin: 0 auto;
 }
 
-img:hover {
-  transform: scale(1.05);
-  transition: transform 0.3s ease;
-  box-shadow: 0 0 20px crimson;
+/* --- Interaktivne kartice (hover/focus/active) --- */
+.card img,
+.escape-btn img {
+  border-radius: 14px;
+  transform: translateZ(0);
+  transition: transform 220ms ease, box-shadow 220ms ease, filter 220ms ease;
+}
+
+.card:hover img,
+.escape-btn:hover img {
+  transform: scale(1.06) rotate(-0.4deg);
+  box-shadow: 0 0 22px crimson;
+  filter: saturate(1.1) contrast(1.05);
+}
+
+.card:focus-visible,
+.escape-btn:focus-visible {
+  outline: 3px solid crimson;
+  outline-offset: 6px;
+}
+
+.card:focus-visible img,
+.escape-btn:focus-visible img {
+  transform: scale(1.06);
+  box-shadow: 0 0 26px crimson;
+}
+
+.card:active img,
+.escape-btn:active img {
+  transform: scale(0.98);
+  box-shadow: 0 0 12px crimson;
 }
 
 .float {
@@ -115,20 +153,6 @@ img:hover {
   box-shadow: 0 0 20px crimson;
 }
 
-.last-words-form fieldset {
-  border: 2px solid darkred;
-  border-radius: 8px;
-  padding: 20px;
-}
-
-.last-words-form legend {
-  color: crimson;
-  font-size: 26px;
-  font-weight: bold;
-  text-shadow: 0 0 8px red;
-  text-align: center;
-}
-
 .last-words-form label {
   display: block;
   margin-top: 10px;
@@ -144,9 +168,27 @@ img:hover {
   color: darkred;
   border: 2px solid darkred;
   border-radius: 6px;
+  transition: border-color 180ms ease, box-shadow 180ms ease, transform 120ms ease;
 }
 
 .last-words-form input::placeholder { color: #a94444; }
+
+.last-words-form input:focus,
+.last-words-form select:focus {
+  outline: none;
+  border-color: crimson;
+  box-shadow: 0 0 12px crimson;
+  transform: scale(1.01);
+}
+
+.last-words-form input:invalid:not(:placeholder-shown) {
+  border-color: #ff4d4d;
+  box-shadow: 0 0 10px rgba(255, 77, 77, 0.6);
+}
+
+.last-words-form button:active {
+  transform: scale(0.98);
+}
 
 .last-words-form button:hover {
   background: crimson;
@@ -213,39 +255,12 @@ tbody tr:nth-child(even) td {
   font-weight: bold;
 }
 
-table.blood-table tbody tr:hover td {
-  background: rgba(220, 20, 60, 0.15);
+tbody tr:hover td {
+  background: rgba(220, 20, 60, 0.22);
+  transition: background 0.25s ease;
 }
 
-.corner-note {
-  position: fixed;
-  top: 10px;
-  right: 10px;
-  padding: 6px 12px;
-  background: #0a0000;
-  border: 2px solid darkred;
-  border-radius: 8px;
-  font-size: 18px;
-}
-
-body::after {
-  content: "Tip: klikni na sobu koja izgleda najsigurnije.";
-  position: fixed;
-  bottom: 10px;
-  left: 10px;
-  padding: 4px 10px;
-  background: #0a0000;
-  border: 2px solid darkred;
-  border-radius: 8px;
-  font-size: 16px;
-}
-
-.blood-table th,
-.blood-table td {
-  vertical-align: middle;
-}
-
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
   h1 {
     font-size: 40px;
     margin: 12px;
@@ -277,17 +292,23 @@ body::after {
     font-size: 14px;
   }
 
-  .corner-note,
-  body::after {
-    font-size: 14px;
-    left: 5px;
-    right: 5px;
+  thead tr:first-child th {
+    font-size: 18px;
+  }
+
+  thead th, tbody td {
+    padding: 8px;
   }
 }
 
-@media (min-width: 1200px) {
-  .rooms li {
-    margin: 10px 20px;
+@media screen and (min-width: 1200px) {
+  body {
+    max-width: 1200px;
+    margin: auto;
+  }
+
+  h1 {
+    font-size: 90px;
   }
 
   table.blood-table {
@@ -298,6 +319,14 @@ body::after {
     max-width: 600px;
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
 
 
 
