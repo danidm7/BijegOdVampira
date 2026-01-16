@@ -2,6 +2,10 @@ body {
   background: black;
   margin: 0;
   font-family: creepster, cursive;
+  min-height: 100vh;
+}
+html {
+  background: black;
 }
 
 h1, p, a, ol {
@@ -98,7 +102,6 @@ a:hover {
   margin: 0 auto;
 }
 
-/* --- Interaktivne kartice (hover/focus/active) --- */
 .card img,
 .escape-btn img {
   border-radius: 14px;
@@ -302,10 +305,11 @@ tbody tr:hover td {
 }
 
 @media screen and (min-width: 1200px) {
-  body {
+  .page {
     max-width: 1200px;
     margin: auto;
   }
+}
 
   h1 {
     font-size: 90px;
@@ -340,9 +344,6 @@ tbody tr:hover td {
   }
 }
 
-html {
-  background: black;
-}
 
 
 
