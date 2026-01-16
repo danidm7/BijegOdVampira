@@ -327,6 +327,19 @@ tbody tr:hover td {
   }
 }
 
+.rooms li:nth-child(odd) {
+  animation: pulse 2s infinite alternate;
+}
+
+@keyframes pulse {
+  from {
+    box-shadow: 0 0 6px darkred;
+  }
+  to {
+    box-shadow: 0 0 18px crimson;
+  }
+}
+
 
 
 
